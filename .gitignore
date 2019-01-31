@@ -284,3 +284,9 @@ Helio.Network.Test.Server/bin/Debug/System.Xml.XmlDocument.dll
 Helio.Network.Test.Server/bin/Debug/System.Xml.XmlSerializer.dll
 Helio.Network.Test.Server/bin/Debug/System.Xml.XPath.dll
 Helio.Network.Test.Server/bin/Debug/System.Xml.XPath.XDocument.dll
+.vs/Helio.Network/v15/.suo
+Helio.Network.Test/obj/Debug/netstandard2.0/Helio.Network.Test.csprojAssemblyReference.cache
+.vs/Helio.Network/v15/Server/sqlite3/storage.ide-wal
+.vs/Helio.Network/v15/Server/sqlite3/storage.ide-shm
+.vs/Helio.Network/v15/Server/sqlite3/storage.ide
+.vs/Helio.Network/v15/Server/sqlite3/db.lock
