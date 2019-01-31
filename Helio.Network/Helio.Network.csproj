@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\lidgren-network-gen3-master\Lidgren.Network\Lidgren.Network.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="protobuf-net">
+      <HintPath>..\Protobuf-net\protobuf-net.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

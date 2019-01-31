@@ -1,0 +1,16 @@
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\bin\Debug\netstandard2.0\Helio.Network.deps.json
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\bin\Debug\netstandard2.0\Helio.Network.dll
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\bin\Debug\netstandard2.0\Helio.Network.pdb
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\bin\Debug\netstandard2.0\Lidgren.Network.dll
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\bin\Debug\netstandard2.0\protobuf-net.dll
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\bin\Debug\netstandard2.0\Lidgren.Network.pdb
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\bin\Debug\netstandard2.0\Lidgren.Network.xml
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\bin\Debug\netstandard2.0\protobuf-net.pdb
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\bin\Debug\netstandard2.0\protobuf-net.xml
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\obj\Debug\netstandard2.0\Helio.Network.csprojAssemblyReference.cache
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\obj\Debug\netstandard2.0\Helio.Network.csproj.CoreCompileInputs.cache
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\obj\Debug\netstandard2.0\Helio.Network.AssemblyInfoInputs.cache
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\obj\Debug\netstandard2.0\Helio.Network.AssemblyInfo.cs
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\obj\Debug\netstandard2.0\Helio.Network.csproj.CopyComplete
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\obj\Debug\netstandard2.0\Helio.Network.dll
+C:\Users\alund\Documents\GitHub\Helio.Network\Helio.Network\obj\Debug\netstandard2.0\Helio.Network.pdb
