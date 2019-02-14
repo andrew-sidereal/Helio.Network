@@ -11,7 +11,7 @@ namespace Helio.Network.Server
         #region Overrides
 
         private NetServer NetServer { get; set; }
-        public override NetPeer NetPeer
+        public override NetPeer NetPeer 
         {
             get
             {

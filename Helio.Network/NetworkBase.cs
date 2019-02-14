@@ -131,9 +131,17 @@ namespace Helio.Network
                         break;
 
                     case NetIncomingMessageType.StatusChanged:
-                        // For example: connected or disconnected.
                         Console.WriteLine("Connection '"+incomingMessage.SenderConnection.RemoteUniqueIdentifier+"' status changed to '" + incomingMessage.SenderConnection.Status.ToString()+ "'.");
-                        this.AnnounceConnectionStatusChanged(incomingMessage.SenderConnection.Status);
+                        switch (incomingMessage.SenderConnection.Status)
+                        {
+                            case NetConnectionStatus.Connected:
+                                this.AnnounceConnectionConnected(incomingMessage.SenderConnection);
+                                break;
+
+                            case NetConnectionStatus.Disconnected:
+                                this.AnnounceConnectionDisconnected(incomingMessage.SenderConnection);
+                                break;
+                        }
                         break; 
 
                     case NetIncomingMessageType.VerboseDebugMessage:
@@ -202,11 +210,25 @@ namespace Helio.Network
 
         #region Events
 
-        public event EventHandler<NetConnectionStatus> OnConnectionStatusChanged;
-        private void AnnounceConnectionStatusChanged(NetConnectionStatus newStatus)
+        //public event EventHandler<NetConnectionStatus> OnConnectionStatusChanged;
+        //private void AnnounceConnectionStatusChanged(NetConnectionStatus newStatus)
+        //{
+        //    if (this.OnConnectionStatusChanged != null)
+        //        this.OnConnectionStatusChanged(this, newStatus);
+        //}
+
+        public event EventHandler<NetConnection> OnConnectionConnected;
+        private void AnnounceConnectionConnected(NetConnection connection)
         {
-            if (this.OnConnectionStatusChanged != null)
-                this.OnConnectionStatusChanged(this, newStatus);
+            if (this.OnConnectionConnected != null)
+                this.OnConnectionConnected(this, connection);
+        }
+
+        public event EventHandler<NetConnection> OnConnectionDisconnected;
+        private void AnnounceConnectionDisconnected(NetConnection connection)
+        {
+            if (this.OnConnectionDisconnected != null)
+                this.OnConnectionDisconnected(this, connection);
         }
 
         // https://stackoverflow.com/questions/3813261/how-to-store-delegates-in-a-list

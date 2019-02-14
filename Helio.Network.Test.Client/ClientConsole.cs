@@ -21,7 +21,7 @@ namespace Helio.Network.Test.Client
             this.NetworkClient.MessageHandlers.Add((int)TestMessageTypes.Foo, this.FooMessageHandler);
 
             // wire up other events
-            this.NetworkClient.OnConnectionStatusChanged += NetworkClient_OnConnectionStatusChanged;
+            this.NetworkClient.OnConnectionConnected += NetworkClient_OnConnectionConnected; 
 
             // start the game loop
             this.Run();
@@ -80,12 +80,9 @@ namespace Helio.Network.Test.Client
             Console.WriteLine("Message received from server of type '" + message.MessageType.ToString() + "': " + foo.ToString());
         }
 
-        private static void NetworkClient_OnConnectionStatusChanged(object sender, NetConnectionStatus e)
+        private void NetworkClient_OnConnectionConnected(object sender, NetConnection e)
         {
-            if (e == NetConnectionStatus.Connected)
-            {
-                Console.WriteLine("You are now connected. Press enter twice to send a test model to the server and have it echoed back.");
-            }
+            Console.WriteLine("You are now connected. Press enter twice to send a test model to the server and have it echoed back.");
         }
     }
 }
