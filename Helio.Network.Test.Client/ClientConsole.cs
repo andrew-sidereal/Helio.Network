@@ -19,6 +19,7 @@ namespace Helio.Network.Test.Client
 
             // wire up message handlers
             this.NetworkClient.MessageHandlers.Add((int)TestMessageTypes.Foo, this.FooMessageHandler);
+            this.NetworkClient.MessageHandlers.Add((int)TestMessageTypes.Bar, this.BarMessageHandler);
 
             // wire up other events
             this.NetworkClient.OnConnectionConnected += NetworkClient_OnConnectionConnected; 
@@ -67,6 +68,20 @@ namespace Helio.Network.Test.Client
                         this.NetworkClient.SendToServer((int)TestMessageTypes.Foo, foo);
 
                         break;
+
+                    case ConsoleKey.Spacebar:
+
+                        // create test message
+                        var bar = new BarMessage();
+                        bar.TimeOriginallySent = DateTime.Now;
+
+                        // for testing, print what it is
+                        Console.WriteLine("Sending to server: '" + bar.ToString() + "'");
+
+                        // send test message to server
+                        this.NetworkClient.SendToServer((int)TestMessageTypes.Bar, bar);
+
+                        break;
                 }
             }
         }
@@ -78,6 +93,16 @@ namespace Helio.Network.Test.Client
 
             // write to console
             Console.WriteLine("Message received from server of type '" + message.MessageType.ToString() + "': " + foo.ToString());
+        }
+
+        private void BarMessageHandler(ReceivedNetworkMessage message)
+        {
+            // deserialize
+            var bar = message.As<BarMessage>();
+
+            // write to console
+            Console.WriteLine(
+                "Message received from client connection '" + message.SenderConnectionId + "' of type '" + message.MessageType.ToString() + "': " + bar.ToString());
         }
 
         private void NetworkClient_OnConnectionConnected(object sender, NetConnection e)

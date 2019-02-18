@@ -43,11 +43,28 @@ namespace Helio.Network.Server
             System.Net.IPAddress ipAddress;
             NetUtility.GetMyAddress(out ipAddress);
             Console.WriteLine("Server address: " + ipAddress.ToString());
+
+            this.OnConnectionConnected += NetworkServer_OnConnectionConnected;
+            this.OnConnectionDisconnected += NetworkServer_OnConnectionDisconnected;
         }
 
         #endregion
 
-        #region Methods 
+        #region Connection Management
+
+        private Dictionary<long, NetConnection> ConnectionDictionary = new Dictionary<long, NetConnection>();
+
+        private void NetworkServer_OnConnectionConnected(object sender, NetConnection connection)
+        {
+            // add to the dictionary
+            this.ConnectionDictionary.Add(connection.RemoteUniqueIdentifier, connection);
+        }
+
+        private void NetworkServer_OnConnectionDisconnected(object sender, NetConnection connection)
+        {
+            // remove from the dictionary
+            this.ConnectionDictionary.Remove(connection.RemoteUniqueIdentifier);
+        }
         
         /// <summary>
         /// TODO: store connections in a hashlist for performance.
@@ -56,18 +73,24 @@ namespace Helio.Network.Server
         /// <returns></returns>
         private NetConnection GetConnectionById(long connectionId)
         {
-            return this.NetPeer.Connections.FirstOrDefault(con => con.RemoteUniqueIdentifier == connectionId);
+            //return this.NetPeer.Connections.FirstOrDefault(con => con.RemoteUniqueIdentifier == connectionId);
+            return this.ConnectionDictionary[connectionId];
         }
 
-        /// <summary>
-        /// TODO: store connections in a hashlist for performance.
-        /// </summary>
-        /// <param name="connectionIds"></param>
-        /// <returns></returns>
         private IEnumerable<NetConnection> GetConnectionsByIds(IEnumerable<long> connectionIds)
         {
-            return this.NetPeer.Connections.Where(con => connectionIds.Contains( con.RemoteUniqueIdentifier ) );
+            //return this.NetPeer.Connections.Where(con => connectionIds.Contains( con.RemoteUniqueIdentifier ) );
+            List<NetConnection> connections = new List<NetConnection>();
+            foreach( var connectionId in connectionIds)
+            {
+                connections.Add(this.GetConnectionById(connectionId));
+            }
+            return connections;
         }
+
+        #endregion
+
+        #region Send Methods
 
         public void SendToAllClients(int messageType, object message, NetDeliveryMethod deliveryMethod = NetDeliveryMethod.UnreliableSequenced)
         {
