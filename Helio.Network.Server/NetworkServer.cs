@@ -92,7 +92,7 @@ namespace Helio.Network.Server
 
         #region Send Methods
 
-        public void SendToAllClients(int messageType, object message, NetDeliveryMethod deliveryMethod = NetDeliveryMethod.UnreliableSequenced)
+        public void SendToAllClients(int messageType, object message, NetDeliveryMethod deliveryMethod = NetDeliveryMethod.Unreliable)
         {
             // simply send to everyone
             this.NetServer.SendToAll(
@@ -103,7 +103,7 @@ namespace Helio.Network.Server
             );
         }
 
-        public void SendToManyClients(IEnumerable<long> connectionIds, int messageType, object message, NetDeliveryMethod deliveryMethod = NetDeliveryMethod.UnreliableSequenced)
+        public void SendToManyClients(IEnumerable<long> connectionIds, int messageType, object message, NetDeliveryMethod deliveryMethod = NetDeliveryMethod.Unreliable)
         {
             // get recipient connections
             var recipients = this.GetConnectionsByIds(connectionIds);
@@ -117,7 +117,7 @@ namespace Helio.Network.Server
             );
         }
 
-        public void SendToOneClient(long connectionId, int messageType, object message, NetDeliveryMethod deliveryMethod = NetDeliveryMethod.UnreliableSequenced)
+        public void SendToOneClient(long connectionId, int messageType, object message, NetDeliveryMethod deliveryMethod = NetDeliveryMethod.Unreliable)
         {
             // get recipient connection
             var recipient = this.GetConnectionById(connectionId);

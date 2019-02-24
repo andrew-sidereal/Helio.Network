@@ -88,7 +88,7 @@ namespace Helio.Network.Client
         /// Overall, it is thus advisable to choose a delivery method as unreliable as possible, but as reliable as necessary.
         /// 
         /// </param>
-        public void SendToServer(int messageType, object message, NetDeliveryMethod deliveryMethod = NetDeliveryMethod.UnreliableSequenced)
+        public void SendToServer(int messageType, object message, NetDeliveryMethod deliveryMethod = NetDeliveryMethod.Unreliable)
         {
             // send message
             this.NetClient.SendMessage(
